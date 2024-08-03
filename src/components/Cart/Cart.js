@@ -19,14 +19,19 @@ const Cart = (props) => {
     }
     // const tax= Math.round(total/10);
     const tax= (total/10).toFixed(2);
+    const grandTotal=(total+shipping+Number(tax)).toFixed(2);
+    const formatNumber= num=>{
+        const precision =num.toFixed(2);
+        return Number(precision);
+    }
     return ( 
         <div>
             <h4>order summary</h4>
             <p>Items Order: {cart.length} </p>
-            <p>product price: {total}</p>
+            <p>product price: {formatNumber(total)}</p>
             <p><small>Shipping cost: {shipping}</small></p>
             <p><small>Tax +vat: {tax}</small></p>
-            <p>Total Price: {total+shipping+Number(tax)}</p>
+            <p>Total Price: {grandTotal}</p>
         </div>
     );
 };
